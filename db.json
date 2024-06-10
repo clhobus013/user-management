@@ -1,0 +1,32 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "first_name": "Diego",
+            "last_name": "Souza",
+            "phone": "+55 (99) 9999-9999",
+            "email": "diego@email.com",
+            "access_profile": ["Supervisor", "Analista"],
+            "language": "Português BR",
+            "preferred_contact": "Todos",
+            "status": "Ativo",
+            "creation_date": "10/10/2020",
+            "last_access_date": "10/10/2020",
+            "last_access_time": "10:00"
+        },
+        {
+            "id": 2,
+            "first_name": "Tiago",
+            "last_name": "Junior",
+            "phone": "+55 (99) 9999-9999",
+            "email": "tiago@email.com",
+            "access_profile": ["Analista"],
+            "language": "Português BR",
+            "preferred_contact": "Telefone",
+            "status": "Bloqueado",
+            "creation_date": "10/10/2020",
+            "last_access_date": "10/10/2020",
+            "last_access_time": "10:00"
+        }
+    ]
+}
