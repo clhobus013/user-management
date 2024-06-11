@@ -5,12 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserListComponent } from './user-list/user-list.component';
+import { FormComponent } from './form/form.component';
+
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
