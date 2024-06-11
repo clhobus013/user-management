@@ -1,0 +1,56 @@
+<div class="fill-screen p-3">
+    <h1 class="fs-3 mb-3">Usários</h1>
+    
+    <div class="col-12 d-flex justify-content-between">
+        <div class="col-6 row g-3">
+            <div class="col-7 mb-3">
+                <input type="email" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Pesquise pelo nome ou e-mail">
+            </div>
+    
+            <div class="col-5">
+                <select class="form-select" aria-label="Selecionar status para filtrar">
+                    <option selected disabled>Filtrar</option>
+                    <option *ngFor="let itemStatus of status" [value]="itemStatus.id">{{itemStatus.descricao}}</option>
+                </select>
+            </div>
+        </div>
+        <button class="col-2 btn btn-primary mb-auto">Novo usuário</button>
+    </div>
+    
+    <table class="table table-striped">
+        <thead class="position-sticky top-0 z-5">
+            <tr>
+                <th scope="col">Usuários</th>
+                <th scope="col">Status</th>
+                <th scope="col">Data de criação</th>
+                <th scope="col">Último acesso</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="user-table">
+            <tr *ngFor="let user of users | slice: (page-1) * pageSize : page * pageSize">
+                <td scope="row">{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.status.descricao}}</td>
+                <td>{{user.creation_date}}</td>
+                <td>{{user.last_access_date}}</td>
+                <td><button class="btn btn-light"><fa-icon [icon]="faEllipsisVertical"></fa-icon></button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="col-12 d-flex justify-content-center fixed-bottom p-2 px-4">
+        <ngb-pagination class="col-9 d-flex justify-content-center" [collectionSize]="users.length" [(page)]="page" [pageSize]="pageSize">
+            <ng-template ngbPaginationPrevious>Anterior</ng-template>
+            <ng-template ngbPaginationNext>Próximo</ng-template>
+        </ngb-pagination>
+
+        <div class="col-3">
+            <select [(ngModel)]="pageSize" class="form-select" aria-label="Selecionar status para filtrar">
+                <option selected [value]="10">10 itens por página</option>
+                <option [value]="20">20 itens por página</option>
+                <option [value]="30">30 itens por página</option>
+            </select>
+        </div>
+    </div>
+</div>
