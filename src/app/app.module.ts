@@ -9,6 +9,7 @@ import { FormComponent } from './form/form.component';
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     NgbModule,
