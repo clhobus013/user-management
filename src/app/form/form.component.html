@@ -1,1 +1,22 @@
-<p>form works!</p>
+<ng-template #content let-c="close">
+    <div class="p-4">
+        <div class="d-flex flex-wrap justify-content-between pb-2">
+            <h4 class="col-10 modal-title fs-4" id="modal-basic-title">Adicionar usuário</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+            <span class="col-12 small">Aqui você adiciona e configura os usuários que fazem parte da sua equipe</span>
+        </div>
+        <div class="pb-2">
+            <p>Formulario</p>
+        </div>
+        <div class="row gx-2">
+            <div class="col">
+                <button type="button" class="col-12 btn btn-outline-primary px-2" (click)="close()">Fechar</button>
+            </div>
+            <div class="col">
+                <button type="button" class="col-12 btn btn-primary px-2" (click)="c('Save click')">Enviar convite</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<button class="btn btn-primary mb-auto" (click)="open(content)">Novo usuário</button>
