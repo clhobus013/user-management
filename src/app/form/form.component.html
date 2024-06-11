@@ -1,4 +1,4 @@
-<ng-template #content let-c="close">
+<ng-template #content>
     <div class="p-4">
         <div class="d-flex flex-wrap justify-content-between pb-2">
             <h4 class="col-10 modal-title fs-4" id="modal-basic-title">Adicionar usuário</h4>
@@ -6,14 +6,92 @@
             <span class="col-12 small">Aqui você adiciona e configura os usuários que fazem parte da sua equipe</span>
         </div>
         <div class="pb-2">
-            <p>Formulario</p>
+            <form [formGroup]="form">
+
+                <div class="row gx-2">
+                    <div class="col-6 mb-3">
+                        <label for="first_name" class="form-label">Nome</label>
+                        <input formControlName="first_name" type="text" class="form-control" id="first_name"
+                            placeholder="Nome" [ngClass]="!isFieldValid('first_name') ? 'is-invalid' : ''">
+                        <div *ngIf="!isFieldValid('first_name')" [ngClass]="displayFieldCss('first_name')">Por favor,
+                            informe o nome do usuário</div>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="last_name" class="form-label">Sobrenome</label>
+                        <input formControlName="last_name" type="text" class="form-control" id="last_name"
+                            placeholder="Sobrenome" [ngClass]="!isFieldValid('last_name') ? 'is-invalid' : ''">
+                        <div *ngIf="!isFieldValid('last_name')" [ngClass]="displayFieldCss('last_name')">Por favor,
+                            informe o sobrenome do usuário</div>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="phone" class="form-label">Telefone</label>
+                        <input formControlName="phone" type="text" class="form-control" id="phone"
+                            placeholder="Telefone" [ngClass]="!isFieldValid('phone') ? 'is-invalid' : ''">
+                        <div *ngIf="!isFieldValid('phone')" [ngClass]="displayFieldCss('phone')">Por favor, informe o
+                            telefone do usuário</div>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="email" class="form-label">E-mail corporativo</label>
+                        <input formControlName="email" type="email" class="form-control" id="email" placeholder="E-mail"
+                            [ngClass]="!isFieldValid('email') ? 'is-invalid' : ''">
+                        <div *ngIf="!isFieldValid('email')" [ngClass]="displayFieldCss('email')">Por favor, informe o
+                            e-mail do usuário</div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label for="access_profile" class="form-label">Perfil de acesso</label>
+                        <select formControlName="access_profile" class="form-select" id="access_profile" [ngClass]="!isFieldValid('access_profile') ? 'is-invalid' : ''">
+                            <option selected disabled [value]="null">Perfil de acesso</option>
+                            <option *ngFor="let accessProfile of accessProfiles" [value]="accessProfile.id">{{accessProfile.description}}</option>
+                        </select>
+                        <div *ngIf="!isFieldValid('access_profile')" [ngClass]="displayFieldCss('access_profile')">Por
+                            favor, informe o(s) perfil(s) do usuário</div>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="language" class="form-label">Idioma</label>
+                        <select formControlName="language" class="form-select" id="language" [ngClass]="!isFieldValid('language') ? 'is-invalid' : ''">
+                            <option *ngFor="let language of languages" [value]="language.id">{{language.description}}</option>
+                        </select>
+                        <div *ngIf="!isFieldValid('language')" [ngClass]="displayFieldCss('language')">Por favor,
+                            informe o idioma do usuário</div>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="language" class="form-label">Contato preferencial</label>
+                        <div class="row px-3">
+                            <div *ngFor="let contact of contacts" class="col form-check">
+                                <input formControlName="preferred_contact" class="form-check-input" type="radio" [id]="'contact_' + contact.id" [value]="contact.id">
+                                <label class="form-check-label" [for]="'contact_' + contact.id">
+                                    {{contact.description}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="row gx-2">
             <div class="col">
                 <button type="button" class="col-12 btn btn-outline-primary px-2" (click)="close()">Fechar</button>
             </div>
             <div class="col">
-                <button type="button" class="col-12 btn btn-primary px-2" (click)="c('Save click')">Enviar convite</button>
+
+                <button
+                    type="submit"
+                    class="col-12 btn btn-primary px-2"
+                    placement="bottom"
+                    ngbPopover="Por favor, preencha corretamente os campos destacados."
+                    popoverTitle="Formulário inválido"
+                    triggers="manual"
+                    #popover="ngbPopover"
+                    (click)="save(popover)"
+                >
+                    Enviar convite
+                </button>
             </div>
         </div>
     </div>
