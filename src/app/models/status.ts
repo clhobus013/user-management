@@ -1,11 +1,11 @@
 export class Status {
     id: number;
-    descricao: string;
+    description: string;
     color: string;
 
-    constructor(id: number, descricao: string, color: string) {
+    constructor(id: number, description: string, color: string) {
         this.id = id;
-        this.descricao = descricao;
+        this.description = description;
         this.color = color;
     }
 }

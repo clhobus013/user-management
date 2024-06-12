@@ -1,9 +1,9 @@
 export class Profile {
     id: number;
-    descricao: string;
+    description: string;
 
-    constructor(id: number, descricao: string) {
+    constructor(id: number, description: string) {
         this.id = id;
-        this.descricao = descricao;
+        this.description = description;
     }
 }
