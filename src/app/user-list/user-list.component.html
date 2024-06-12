@@ -41,7 +41,7 @@
         <tbody class="user-table">
             <tr *ngFor="let user of users | slice: (page-1) * pageSize : page * pageSize">
                 <td scope="row">{{user.first_name}} {{user.last_name}}</td>
-                <td>{{user.status.description}}</td>
+                <td><div class="rounded" [ngClass]="'bg-'+user.status.color"><p class="text-center" [ngClass]="user.status.color == 'warning' ? '' : 'text-light'">{{user.status.description}}</p></div></td>
                 <td>{{user.creation_date}}</td>
                 <td>{{user?.last_access_date}}</td>
                 <td><button class="btn btn-light"><fa-icon [icon]="faEllipsisVertical"></fa-icon></button></td>
