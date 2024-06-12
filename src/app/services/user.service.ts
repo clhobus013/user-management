@@ -27,6 +27,10 @@ export class UserService {
     return this.http.get<IUser>(this._url + `/users/${id}`, this.requestOptions);
   }
 
+  getUsersWithFilters(statusId: number): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this._url + `/users?status=${statusId}`, this.requestOptions);
+  }
+
   postUser(user: IUser): Observable<unknown> {
     return this.http.post<unknown>(this._url + "/users", user);
   }

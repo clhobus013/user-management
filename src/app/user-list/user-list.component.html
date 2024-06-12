@@ -4,14 +4,16 @@
     <div class="col-12 d-flex justify-content-between">
         <div class="col-6 row g-3">
             <div class="col-7 mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1"
+                <input [(ngModel)]="search" (ngModelChange)="filterUsers()" type="email" class="form-control" id="exampleFormControlInput1"
                     placeholder="Pesquise pelo nome ou e-mail">
             </div>
     
             <div class="col-5">
-                <select class="form-select" aria-label="Selecionar status para filtrar">
-                    <option selected disabled>Filtrar</option>
-                    <option *ngFor="let itemStatus of status" [value]="itemStatus.id">{{itemStatus.description}}</option>
+                <select [(ngModel)]="searchStatus" (ngModelChange)="filterUsers()" name="status" class="form-select" aria-label="Selecionar status para filtrar">
+                    <option selected [ngValue]="-1">Filtrar</option>
+                    <option *ngFor="let itemStatus of status" [ngValue]="itemStatus.id">
+                        {{itemStatus.description}}
+                    </option>
                 </select>
             </div>
         </div>
@@ -25,7 +27,8 @@
           </div>
     </ng-template>
     
-    <table *ngIf="users.length > 0; else emptyContent" class="table table-striped">
+    <div class="border rounded">
+    <table *ngIf="users.length > 0; else emptyContent" class="table table-striped m-0">
         <thead class="position-sticky top-0 z-5">
             <tr>
                 <th scope="col">Usuários</th>
@@ -45,6 +48,7 @@
             </tr>
         </tbody>
     </table>
+    </div>
     
     <div class="col-12 d-flex justify-content-center fixed-bottom p-2 px-4">
         <ngb-pagination class="col-9 d-flex justify-content-center" [collectionSize]="users.length" [(page)]="page" [pageSize]="pageSize">

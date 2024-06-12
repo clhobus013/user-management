@@ -17,7 +17,9 @@ export class UserListComponent implements OnInit {
   public isCollapsed = false;
 
   public page: number = 1;
-  public pageSize: number = 20;
+  public pageSize: number = 10;
+  public search: string = "";
+  public searchStatus: number = -1;
 
   public status: Status[] = [
     new Status(1, "Ativo", "success"),
@@ -30,13 +32,46 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getUsers();
+  }
+
+  private getUsers() {
     this.userService.getUsers().subscribe({
       next: (data: any) => {
-        this.users = data;
+        this.users = this.filterBySearch(data);
       },
       error: (error: any) => {
 
       }
     })
+  }
+
+  public filterByStatus() {
+    this.userService.getUsersWithFilters(this.searchStatus).subscribe({
+      next: (data: any) => {
+        this.users = this.filterBySearch(data);
+      },
+      error: (error: any) => {
+
+      }
+    })
+  }
+
+  public filterBySearch(users: IUser[]) {
+    return users.filter((user: IUser) =>
+      user.first_name.toLowerCase().includes(this.search) ||
+      user.last_name.toLowerCase().includes(this.search) ||
+      (user.first_name + " " +user.last_name).toLowerCase().includes(this.search) ||
+      user.email.toLowerCase().includes(this.search));
+  }
+
+  public filterUsers() {
+
+    if(this.searchStatus > 0) {
+      this.filterByStatus();
+    } else {
+      this.getUsers();
+    }
+
   }
 }
