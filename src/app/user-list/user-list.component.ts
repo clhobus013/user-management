@@ -3,6 +3,7 @@ import { Status } from '../models/status';
 import { IUser } from '../models/user';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from '../services/user.service';
+import { StatusService } from '../services/status.service';
 
 
 @Component({
@@ -16,22 +17,21 @@ export class UserListComponent implements OnInit {
 
   public isCollapsed = false;
 
+  public search: string = "";
   public page: number = 1;
   public pageSize: number = 10;
-  public search: string = "";
   public searchStatus: number = -1;
 
-  public status: Status[] = [
-    new Status(1, "Ativo", "success"),
-    new Status(2, "Pendente", "warning"),
-    new Status(3, "Bloqueado", "danger"),
-  ]
-
+  public status: Status[] = []
   public users: IUser[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private statusService: StatusService
+  ) { }
 
   ngOnInit() {
+    this.getStatus();
     this.getUsers();
   }
 
@@ -42,6 +42,14 @@ export class UserListComponent implements OnInit {
       },
       error: (error: any) => {
 
+      }
+    })
+  }
+
+  private getStatus() {
+    this.statusService.getStatus().subscribe({
+      next: (data: any) => {
+        this.status = data;
       }
     })
   }
@@ -59,15 +67,15 @@ export class UserListComponent implements OnInit {
 
   public filterBySearch(users: IUser[]) {
     return users.filter((user: IUser) =>
-      user.first_name.toLowerCase().includes(this.search) ||
-      user.last_name.toLowerCase().includes(this.search) ||
-      (user.first_name + " " +user.last_name).toLowerCase().includes(this.search) ||
-      user.email.toLowerCase().includes(this.search));
+      user.first_name.toLowerCase().includes(this.search.toLowerCase()) ||
+      user.last_name.toLowerCase().includes(this.search.toLowerCase()) ||
+      (user.first_name + " " + user.last_name).toLowerCase().includes(this.search.toLowerCase()) ||
+      user.email.toLowerCase().includes(this.search.toLowerCase()));
   }
 
   public filterUsers() {
 
-    if(this.searchStatus > 0) {
+    if (this.searchStatus > 0) {
       this.filterByStatus();
     } else {
       this.getUsers();

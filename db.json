@@ -56,37 +56,109 @@
         "color": "danger"
       },
       "creation_date": "11/06/2024"
+    },
+    {
+      "id": "95c0",
+      "first_name": "Milena",
+      "last_name": "da Rosa",
+      "phone": "555499999999",
+      "email": "milena@bol.com.br",
+      "access_profile": "2",
+      "language": 1,
+      "preferred_contact": 1,
+      "status": {
+        "id": 1,
+        "description": "Ativo",
+        "color": "success"
+      },
+      "creation_date": "11/06/2024"
+    },
+    {
+      "id": "383e",
+      "first_name": "Junior",
+      "last_name": "Silva",
+      "phone": "5554992512759",
+      "email": "clauu013@gmail.com",
+      "access_profile": "3",
+      "language": "3",
+      "preferred_contact": 3,
+      "status": null,
+      "creation_date": null
+    },
+    {
+      "id": "28cb",
+      "first_name": "asd",
+      "last_name": "asd",
+      "phone": "5555555555555",
+      "email": "teste@gmail.com",
+      "access_profile": "1",
+      "language": "4",
+      "preferred_contact": 1,
+      "status": null,
+      "creation_date": null
     }
   ],
   "status": [
     {
       "id": 1,
-      "descricao": "Ativo",
+      "description": "Ativo",
       "color": "success"
     },
     {
       "id": 2,
-      "descricao": "Pendente",
+      "description": "Pendente",
       "color": "warning"
     },
     {
       "id": 3,
-      "descricao": "Bloqueado",
+      "description": "Bloqueado",
       "color": "danger"
     }
   ],
   "profiles": [
     {
       "id": 1,
-      "descricao": "Supervisor"
+      "description": "Supervisor"
     },
     {
       "id": 2,
-      "descricao": "Analista"
+      "description": "Analista"
     },
     {
       "id": 3,
-      "descricao": "Estagiário"
+      "description": "Estagiário"
+    }
+  ],
+  "languages": [
+    {
+      "id": 1,
+      "description": "Português BR"
+    },
+    {
+      "id": 2,
+      "description": "Espanhol"
+    },
+    {
+      "id": 3,
+      "description": "Alemão"
+    },
+    {
+      "id": 4,
+      "description": "Inglês"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "description": "E-mail"
+    },
+    {
+      "id": 2,
+      "description": "Telefone"
+    },
+    {
+      "id": 3,
+      "description": "Todos"
     }
   ]
 }

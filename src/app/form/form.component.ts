@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal, NgbModalConfig, NgbModalRef, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
 import { Status } from '../models/status';
+import { GenericService } from '../services/generic.service';
+import { Generic } from '../models/Generic';
 
 @Component({
   selector: 'app-form',
@@ -12,40 +14,44 @@ import { Status } from '../models/status';
 export class FormComponent implements OnInit {
 
   form!: FormGroup;
-  send: boolean = false;
 
+  send: boolean = false;
   showToast: boolean = false;
+
+  accessProfiles: Generic[] = [];
+  languages: Generic[] = [];
+  contacts: Generic[] = [];
 
   private modalReference?: NgbModalRef;
 
-  accessProfiles: any[] = [
-    { id: 1, description: "Supervisor" },
-    { id: 2, description: "Analista" },
-  ]
-
-  languages: any[] = [
-    { id: 1, description: "Português BR" },
-    { id: 2, description: "Espanhol" },
-  ]
-
-  contacts: any[] = [
-    { id: 1, description: "E-mail" },
-    { id: 2, description: "Telefone" },
-    { id: 3, description: "Todos" },
-  ]
-
   constructor(
-    private config: NgbModalConfig,
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private genericService: GenericService
   ) {
-    config.backdrop = 'static';
-    config.keyboard = false;
   }
 
   ngOnInit() {
+    this.getGenerics();
     this.initializeForm();
+  }
+
+  private getGenerics() {
+    this.genericService.getLanguages().subscribe({
+      next: (data: any) => this.languages = data
+    }
+    );
+
+    this.genericService.getContacts().subscribe({
+      next: (data: any) => this.contacts = data
+    }
+    );
+
+    this.genericService.getAccessProfiles().subscribe({
+      next: (data: any) => this.accessProfiles = data
+    }
+    );
   }
 
   private initializeForm() {
@@ -103,7 +109,7 @@ export class FormComponent implements OnInit {
     this.send = false;
     this.form.reset();
     this.modalReference?.close();
-    setTimeout(()=> {
+    setTimeout(() => {
       this.showToast = false;
     }, 1500)
   }
