@@ -13,6 +13,8 @@ export class FormComponent implements OnInit {
   form!: FormGroup;
   send: boolean = false;
 
+  showToast: boolean = false;
+
   private modalReference?: NgbModalRef;
 
   accessProfiles: any[] = [
@@ -93,6 +95,9 @@ export class FormComponent implements OnInit {
     this.send = false;
     this.form.reset();
     this.modalReference?.close();
+    setTimeout(()=> {
+      this.showToast = false;
+    }, 1500)
   }
 
   public save(popover: NgbPopover) {
@@ -107,11 +112,10 @@ export class FormComponent implements OnInit {
     this.userService.postUser(this.form.value)
       .subscribe({
         next: (data: any) => {
-          console.log(data);
+          this.showToast = true;
           this.close(false);
         },
         error: (error: any) => {
-          console.log(error);
         }
       });
   }
