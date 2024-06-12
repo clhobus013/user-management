@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalConfig, NgbModalRef, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
+import { Status } from '../models/status';
 
 @Component({
   selector: 'app-form',
@@ -48,6 +49,13 @@ export class FormComponent implements OnInit {
   }
 
   private initializeForm() {
+
+    let status: Status = {
+      "id": 2,
+      "description": "Pendente",
+      "color": "warning"
+    }
+
     this.form = this.formBuilder.group({
       first_name: [null, [Validators.required]],
       last_name: [null, [Validators.required]],
@@ -56,7 +64,7 @@ export class FormComponent implements OnInit {
       access_profile: [null, [Validators.required]],
       language: [1, [Validators.required]],
       preferred_contact: [null],
-      status: [1, { disabled: true }],
+      status: [status, { disabled: true }],
       creation_date: [this.getCurrentDate(), { disabled: true }],
     });
   }

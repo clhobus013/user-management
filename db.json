@@ -1,60 +1,92 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "first_name": "Diego",
-            "last_name": "Souza",
-            "phone": "+55 (99) 9999-9999",
-            "email": "diego@email.com",
-            "access_profile": [1, 2],
-            "language": "Português BR",
-            "preferred_contact": "Todos",
-            "status": 1,
-            "creation_date": "10/10/2020",
-            "last_access_date": "10/10/2020",
-            "last_access_time": "10:00"
-        },
-        {
-            "id": 2,
-            "first_name": "Tiago",
-            "last_name": "Junior",
-            "phone": "+55 (99) 9999-9999",
-            "email": "tiago@email.com",
-            "access_profile": [2],
-            "language": "Português BR",
-            "preferred_contact": "Telefone",
-            "status": 2,
-            "creation_date": "10/10/2020",
-            "last_access_date": "10/10/2020",
-            "last_access_time": "10:00"
-        }
-    ],
-    "status": [
-        {
-            "id": 1,
-            "descricao": "Ativo"
-        },
-        {
-            "id": 2,
-            "descricao": "Pendente"
-        },
-        {
-            "id": 3,
-            "descricao": "Bloqueado"
-        }
-    ],
-    "profiles": [
-        {
-            "id": 1,
-            "descricao": "Supervisor"
-        },
-        {
-            "id": 2,
-            "descricao": "Analista"
-        },
-        {
-            "id": 3,
-            "descricao": "Estagiário"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Diego",
+      "last_name": "Souza",
+      "phone": "+55 (99) 9999-9999",
+      "email": "diego@email.com",
+      "access_profile": [
+        1,
+        2
+      ],
+      "language": "Português BR",
+      "preferred_contact": "Todos",
+      "status": {
+        "id": 2,
+        "description": "Pendente",
+        "color": "warning"
+      },
+      "creation_date": "10/10/2020",
+      "last_access_date": "10/10/2020",
+      "last_access_time": "10:00"
+    },
+    {
+      "id": 2,
+      "first_name": "Tiago",
+      "last_name": "Junior",
+      "phone": "+55 (99) 9999-9999",
+      "email": "tiago@email.com",
+      "access_profile": [
+        2
+      ],
+      "language": "Português BR",
+      "preferred_contact": "Telefone",
+      "status": {
+        "id": 1,
+        "description": "Ativo",
+        "color": "success"
+      },
+      "creation_date": "10/10/2020",
+      "last_access_date": "10/10/2020",
+      "last_access_time": "10:00"
+    },
+    {
+      "id": "42e7",
+      "first_name": "Claudia",
+      "last_name": "Hobus",
+      "phone": "549999999",
+      "email": "clauu013@gmail.com",
+      "access_profile": "2",
+      "language": 1,
+      "preferred_contact": 3,
+      "status": {
+        "id": 3,
+        "description": "Bloqueado",
+        "color": "danger"
+      },
+      "creation_date": "11/06/2024"
+    }
+  ],
+  "status": [
+    {
+      "id": 1,
+      "descricao": "Ativo",
+      "color": "success"
+    },
+    {
+      "id": 2,
+      "descricao": "Pendente",
+      "color": "warning"
+    },
+    {
+      "id": 3,
+      "descricao": "Bloqueado",
+      "color": "danger"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "descricao": "Supervisor"
+    },
+    {
+      "id": 2,
+      "descricao": "Analista"
+    },
+    {
+      "id": 3,
+      "descricao": "Estagiário"
+    }
+  ]
 }
