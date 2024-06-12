@@ -27,7 +27,7 @@
 
                     <div class="col-6 mb-3">
                         <label for="phone" class="form-label">Telefone</label>
-                        <input formControlName="phone" type="text" class="form-control" id="phone"
+                        <input formControlName="phone" type="text" class="form-control" id="phone" mask="+00 (00) 00000-0000||+00 (00) 0000-0000"
                             placeholder="Telefone" [ngClass]="!isFieldValid('phone') ? 'is-invalid' : ''">
                         <div *ngIf="!isFieldValid('phone')" [ngClass]="displayFieldCss('phone')">Por favor, informe o
                             telefone do usuário</div>

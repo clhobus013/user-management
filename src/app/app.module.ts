@@ -10,6 +10,7 @@ import { FormComponent } from './form/form.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    NgxMaskDirective,
+     NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
