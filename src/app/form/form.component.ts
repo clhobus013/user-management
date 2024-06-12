@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { Status } from '../models/status';
 import { GenericService } from '../services/generic.service';
 import { Generic } from '../models/Generic';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-form',
@@ -14,6 +15,7 @@ import { Generic } from '../models/Generic';
 export class FormComponent implements OnInit {
 
   form!: FormGroup;
+  faEnvelope = faEnvelope;
 
   send: boolean = false;
   showToast: boolean = false;

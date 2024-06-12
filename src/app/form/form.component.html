@@ -34,11 +34,18 @@
                     </div>
 
                     <div class="col-6 mb-3">
-                        <label for="email" class="form-label">E-mail corporativo</label>
-                        <input formControlName="email" type="email" class="form-control" id="email" placeholder="E-mail"
-                            [ngClass]="!isFieldValid('email') ? 'is-invalid' : ''">
-                        <div *ngIf="!isFieldValid('email')" [ngClass]="displayFieldCss('email')">Por favor, informe o
-                            e-mail do usuário</div>
+                        <label for="email" class="form-label">
+                            E-mail corporativo
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="icon-search">
+                                <fa-icon [icon]="faEnvelope"></fa-icon>
+                            </span>
+                            <input formControlName="email" type="email" class="form-control" id="email" placeholder="E-mail"
+                                [ngClass]="!isFieldValid('email') ? 'is-invalid' : ''">
+                            <div *ngIf="!isFieldValid('email')" [ngClass]="displayFieldCss('email')">Por favor, informe o
+                                e-mail do usuário</div>
+                        </div>
                     </div>
 
                     <div class="col-12 mb-3">

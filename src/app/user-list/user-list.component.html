@@ -3,9 +3,14 @@
     
     <div class="col-12 d-flex justify-content-between">
         <div class="col-6 row g-3">
-            <div class="col-7 mb-3">
+            <div class="col-7 input-group mb-3">
                 <input [(ngModel)]="search" (ngModelChange)="filterUsers()" type="email" class="form-control" id="exampleFormControlInput1"
                     placeholder="Pesquise pelo nome ou e-mail">
+                <div class="input-group-addon">
+                    <span class="input-group-text" id="icon-search">
+                        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                    </span>
+                </div>
             </div>
     
             <div class="col-5">

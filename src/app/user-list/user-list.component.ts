@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Status } from '../models/status';
 import { IUser } from '../models/user';
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from '../services/user.service';
 import { StatusService } from '../services/status.service';
 
@@ -14,6 +14,7 @@ import { StatusService } from '../services/status.service';
 export class UserListComponent implements OnInit {
 
   faEllipsisVertical = faEllipsisVertical
+  faMagnifyingGlass = faMagnifyingGlass;
 
   public isCollapsed = false;
 
